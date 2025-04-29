@@ -20,7 +20,7 @@ spring:
     function:
       definition: pack|label
     stream:
-      binders:
+      bindings:
         packlabel-in-0:
           destination: order-accepted
           group: ${spring.application.name}

@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.assign
-import org.gradle.kotlin.dsl.named
 import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 plugins {
@@ -25,6 +23,7 @@ extra["springCloudVersion"] = "2024.0.1"
 
 dependencies {
   implementation("org.springframework.boot:spring-boot-starter")
+  implementation("org.springframework.cloud:spring-cloud-starter-config")
   implementation("org.springframework.cloud:spring-cloud-function-context")
   implementation("org.springframework.cloud:spring-cloud-stream-binder-rabbit")
   testImplementation("org.springframework.boot:spring-boot-starter-test")
