@@ -22,10 +22,17 @@ repositories {
 extra["springCloudVersion"] = "2024.0.1"
 
 dependencies {
-  implementation("org.springframework.boot:spring-boot-starter")
+  implementation("org.springframework.boot:spring-boot-starter-actuator")
+  implementation("org.springframework.boot:spring-boot-starter-webflux")
+  //implementation("org.springframework.boot:spring-boot-starter")
+  //implementation("org.springframework.cloud:spring-cloud-function-context")
   implementation("org.springframework.cloud:spring-cloud-starter-config")
-  implementation("org.springframework.cloud:spring-cloud-function-context")
   implementation("org.springframework.cloud:spring-cloud-stream-binder-rabbit")
+  implementation("org.springframework.retry:spring-retry")
+  //
+  runtimeOnly("io.micrometer:micrometer-registry-prometheus")
+  runtimeOnly("io.opentelemetry.javaagent:opentelemetry-javaagent:2.15.0")
+  //
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("org.springframework.cloud:spring-cloud-stream-test-binder")
   testImplementation("io.projectreactor:reactor-test")
@@ -40,6 +47,10 @@ dependencyManagement {
 
 tasks.withType<Test> {
   useJUnitPlatform()
+}
+
+springBoot {
+  buildInfo()
 }
 
 tasks.named<BootBuildImage>("bootBuildImage") {
